@@ -9,11 +9,9 @@
 if (@$_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
     if(isset($_POST['key'])){
         if(isset($_POST['del'])){
-            echo 'Сработало Удаление';
             $db->delite($_POST['key']);
         }
         if(isset($_POST['save'])){
-            echo 'Сработало редактирование';
             $db->edit($_POST);
         }
     }

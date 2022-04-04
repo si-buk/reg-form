@@ -78,9 +78,9 @@ class ValidateForm{
 
     public function validateAddUser(){
         if($this->validatePassword()){
-            if(preg_match('/[A-Za-z]/', $this->dataUser['password']) && preg_match('/[0-9]/', $this->dataUser['password'])){
+            if(preg_match('/[A-Za-z]/', $this->password) && preg_match('/[0-9]/', $this->password)){
                 if($this->maxLength($this->password, 6)){
-                    $this->dataUser['password'] = $this->encryptValue($this->sol);
+                    $this->dataUser['password'] = $this->encryptValue($this->password);
                 }else{
                     $this->error['password'] = 'Length must be greater than 6 characters';
                 }
@@ -89,7 +89,6 @@ class ValidateForm{
             }
 
         }
-
         if($this->validateEmail()){
             if($this->uniqueness($this->validateEmail(), 'email')){
                 $this->error['email'] = 'Email must be unique';
@@ -118,24 +117,31 @@ class ValidateForm{
         $db = new WritingReadingDb();
         $reid = $db->readingDb();
         $uniq='';
-        foreach($reid as $key=> $value){
-            if($meaning == $value[$field]){
-                $value['id'] = $key;
-                $uniq = $value;
-                break;
+        if($reid){
+            foreach($reid as $key=> $value){
+                if($meaning == $value[$field]){
+                    $value['id'] = $key;
+                    $uniq = $value;
+                    break;
+                }
             }
         }
+
         return $uniq;
 
     }
 
-
-
-    public function validateEditUser(){
-        if($this->maxLength($this->password, 6)){
-            $this->dataUser['password'] = $this->encryptValue($this->password);
+    public function validateEditUser($key = null){
+        $db = new WritingReadingDb();
+        $dataUsers = $db->readingDb();
+        if($dataUsers[$key]['password']!== $this->password){
+            if($this->maxLength($this->password, 6)){
+                $this->dataUser['password'] = $this->encryptValue($this->password);
+            }else{
+                $this->error['password'] = 'Length must be greater than 6 characters';
+            }
         }else{
-            $this->error['password'] = 'Length must be greater than 6 characters';
+            $this->dataUser['password'] = $this->password;
         }
         if($this->validateEmail()){
             $this->dataUser['email']= $this->email;

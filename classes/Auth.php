@@ -29,12 +29,14 @@
     public function addSession(){
         $db = new WritingReadingDb();
         $this->token = $db->readingDb($this->pathFileToken);
-        if($this->token[$_COOKIE['token']]){
-            $idUser = $this->token[$_COOKIE['token']];
-            $allUser = $db->readingDb();
-            $oneUser = $allUser[$idUser];
+        $idUser = $this->token[$_COOKIE['token']];
+        $allUser = $db->readingDb();
+        $oneUser = $allUser[$idUser];
+        if($oneUser){
             $_SESSION['name'] = $oneUser['name'];
         }
+
+
     }
 
     public function logout(){

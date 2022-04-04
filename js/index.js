@@ -12,11 +12,15 @@ $(function(){
             data: $data,
             dataType: "html",
             success: function (response) {
+                console.log(response)
                 if(response == 'error'){
                     location.reload();
                 }
                 if(response == 'redirect'){
                     $(location).attr("href", '/')
+                }
+                if(response == 'reg'){
+                    $(location).attr("href", '/login')
                 }
             }
         })
