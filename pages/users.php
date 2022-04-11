@@ -1,9 +1,8 @@
 <?php
-require_once __DIR__.'\..\classes\WritingReadingDb.php';
+require_once __DIR__.'\..\classes\DataBase.php';
 require 'components/header.php';
 
-$fileJson = new WritingReadingDb();
-$dataUser = $fileJson->readingDb();
+$dataUser = Db::readingDb();
 ?>
 
     <div class="container mt-5">

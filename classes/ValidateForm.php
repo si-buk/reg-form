@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'WritingReadingDb.php';
+require_once 'DataBase.php';
 
 class ValidateForm{
     private $sol = 'lfjwuje2395kgy33n5kt2yjrrmnmqb';
@@ -114,8 +114,7 @@ class ValidateForm{
     }
 
     public function uniqueness($meaning, $field){
-        $db = new WritingReadingDb();
-        $reid = $db->readingDb();
+        $reid = Db::readingDb();
         $uniq='';
         if($reid){
             foreach($reid as $key=> $value){
@@ -132,8 +131,7 @@ class ValidateForm{
     }
 
     public function validateEditUser($key = null){
-        $db = new WritingReadingDb();
-        $dataUsers = $db->readingDb();
+        $dataUsers = Db::readingDb();
         if($dataUsers[$key]['password']!== $this->password){
             if($this->maxLength($this->password, 6)){
                 $this->dataUser['password'] = $this->encryptValue($this->password);
