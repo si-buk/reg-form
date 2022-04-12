@@ -35,7 +35,7 @@
                             <?php if($_SESSION['name']):?>
                                 <form action="">
                                     <input name="logout" type="text" hidden>
-                                    <button class="btn btn-danger" >logout</button>
+                                    <button class="btn btn-danger btn-form" type="button">logout</button>
                                 </form>
                             <?php endif ?>
                         </div>

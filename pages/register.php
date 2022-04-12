@@ -49,7 +49,7 @@ require 'components/header.php';
                         ?>
                     </div>
                     <input name="register" type="text" hidden>
-                    <button class="btn btn-primary" type="submit">submit</button>
+                    <button class="btn btn-primary btn-form" id="btn-register" type="button">submit</button>
                 </form>
             </div>
         </div>

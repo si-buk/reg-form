@@ -1,11 +1,10 @@
 $(function(){
-    $('form').submit(function(event){
+    $('.btn-form').click(function(){
         var $data = {}
-        $(this).find('input').each(function(){
+        $(this).parent().find('input').each(function(){
             $data[this.name] = $(this).val()
-        });
-        event.preventDefault();
-        // console.log($data)
+        })
+        console.log($data)
         $.ajax({
             type: "POST",
             url: "success.php",
@@ -27,6 +26,8 @@ $(function(){
         .fail(function(){
             console.log('error')
         })
-        
-    });
+    })
+
+
+
 })

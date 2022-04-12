@@ -15,7 +15,7 @@ require 'components/header.php';
                     <label for="password">Password</label>
                 </div>
                 <input name="auth" type="text" hidden>
-                <button class="btn btn-primary" type="submit">submit</button>
+                <button class="btn btn-primary btn-form" type="button">submit</button>
             </form>
         </div>
     </div>

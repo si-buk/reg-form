@@ -12,7 +12,7 @@ class WritingReadingDb{
             $this->db = Db::readingDb();
             $this->db[] = $validate->validateAddUser();
             if($validate->validateAddUser()){
-                $this->save($this->fileDb, $this->db);
+               Db::save( $this->db);
                 echo 'reg';
             }else{
                 echo 'error';

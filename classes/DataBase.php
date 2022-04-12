@@ -1,8 +1,6 @@
 <?php
 
 class Db{
-
-
     public static function readingDb($where = __DIR__ . '\..\db\db.json'){
         $db = [];
         if(file_exists($where)){

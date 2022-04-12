@@ -50,7 +50,7 @@ $dataUser = Db::readingDb();
                                             <input class="w-100" type="text" name="password" value="<?php echo $value['password'] ?>">
                                             <input name="key" type="text" hidden value="<?php echo $key?>">
                                             <input name="save" type="text" hidden>
-                                            <button type="submit" class="btn btn-primary mt-2">Save</button>
+                                            <button type="button" class="btn btn-primary btn-form mt-2">Save</button>
                                         </form>
                                     </div>
 
@@ -60,7 +60,7 @@ $dataUser = Db::readingDb();
                         <form action="" >
                             <input name="key" type="text" hidden value="<?php echo $key?>">
                             <input name="del" type="text" hidden>
-                            <button class="btn btn-danger">x</button>
+                            <button class="btn btn-danger btn-form" type="button">x</button>
                         </form>
 
                     </td>
